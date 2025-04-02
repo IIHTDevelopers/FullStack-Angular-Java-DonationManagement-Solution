@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>    
+    <meta charset="UTF-16"/>
+  </head>
+<body>
+<nav class="navbar navbar-light bg-primary">
+    <div class="container-fluid">
+        <h1 style="color:aliceblue">Create Donation Request</h1>
+        <div class="d-flex">
+            <!-- On button click Bootstrap Modal will be invoked-->
+            <button (click)="addDonationReq()" type="button" class="btn btn-success"   data-bs-toggle="modal" data-bs-target="#exampleModal" id="create">Create</button>
+          </div>
+    </div>
+</nav>
+
+<!-- <table class="table">
+    <thead>
+        <tr>
+            <th scope="col" class="c1">Request ID</th>
+            <th scope="col" class="c2">Amount</th>
+            <th scope="col" class="c3">Donar Id</th>
+            <th scope="col" class="c4">NGO Id</th>    
+            <th scope="col" class="c5">Donation End Date</th>
+            <th></th>          
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let d of allData">
+            <td>{{d.request_id}}</td>
+            <td>{{d.amount}}</td>
+            <td>{{d.donar_id}}</td>
+            <td>{{d.ngo_id}}</td>           
+            <td>{{d.donation_end_date}}</td>
+        </tr>
+    </tbody>
+</table> -->
+
+
+  <!-- Bootstrap Modal -->  
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel" class="text-primary">Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          
+            <form [formGroup]="formValues" id="formValues">
+
+                <div class="mb-3">
+                    <label  class="form-label" class="fw-bold">Amount</label>
+                    <input type="number" formControlName="amount" class="form-control"  aria-describedby="emailHelp" required/>
+                    <span class="error" *ngIf="amount&&amount.invalid&&amount.touched" class="text-danger"> Required </span>
+                  </div>
+
+                <div class="mb-3" >
+                  <label  class="form-label" class="fw-bold">Donar Id</label>
+                    <input type="number" formControlName="donar_id" class="form-control" aria-describedby="emailHelp" required />
+                  <span class="error" *ngIf="donar_id && donar_id.invalid && donar_id.touched" class="text-danger"> Required </span>
+                  </div>
+
+                  <div class="mb-3">
+                    <label  class="form-label" class="fw-bold">NGO Id</label>
+                      <input type="number" formControlName="ngo_id" class="form-control"  aria-describedby="emailHelp" required/>
+                      <span class="error" *ngIf="ngo_id&&ngo_id.invalid&&ngo_id.touched" class="text-danger"> Required </span>
+                    </div>
+
+                <div class="mb-3">
+                  <label  class="form-label" class="fw-bold">Donation End Date</label>
+                  <input type="date" formControlName="donation_end_date" class="form-control"  aria-describedby="emailHelp" required/>
+                  <span class="error" *ngIf="donation_end_date&&donation_end_date.invalid&&donation_end_date.touched" class="text-danger"> Required </span>
+                </div>
+
+              </form> 
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" *ngIf="showAdd" (click)="postDonationReqData()" class="btn btn-primary" id="save" [disabled]="!formValues.valid">Save</button>
+   
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

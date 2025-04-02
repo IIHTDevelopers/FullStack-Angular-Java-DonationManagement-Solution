@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-16" />
+  </head>
+  <body>
+    <nav class="navbar navbar-light bg-primary">
+      <div class="container-fluid">
+        <h1 style="color: aliceblue">Ngo Details</h1>
+        <div class="d-flex">
+          <!-- On button click Bootstrap Modal will be invoked-->
+          <button
+            (click)="addNgo()"
+            type="button"
+            class="btn btn-success"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            Add
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col" class="c0">Ngo Id</th>
+          <th scope="col" class="c1">Ngo Name</th>
+          <th scope="col" class="c2">User Name</th>
+          <th scope="col" class="c3">Password</th>
+          <th scope="col" class="c4">Address</th>
+          <th scope="col" class="c5">Documents</th>
+          <th scope="col" class="c6">Phone Number</th>
+          <th scope="col" class="c7">Started Date</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of allData">
+          <td>{{ data.ngo_id }}</td>
+          <td>{{ data.ngo_name }}</td>
+          <td>{{ data.username }}</td>
+          <td>{{ data.password }}</td>
+          <td>{{ data.address }}</td>
+          <td>{{ data.documents }}</td>
+          <td>{{ data.phone_number }}</td>
+          <td>{{ data.started_in }}</td>
+
+          <td>
+            <button
+              (click)="ngoEdit(data)"
+              class="btn btn-info"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+              id="edit"
+            >
+              EDIT</button
+            ><!--On click calls Boostrap Model-->
+            <button
+              (click)="deleteNgo(data)"
+              class="btn btn-danger mx-3"
+              id="delete"
+            >
+              DELETE
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Bootstrap Modal -->
+
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel" class="text-primary">
+              Details
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="formValues" id="formValues">
+              <div class="mb-3">
+                <label class="form-label" class="fw-bold">Ngo Name</label>
+                <input
+                  type="text"
+                  formControlName="ngo_name"
+                  class="form-control"
+                  aria-describedby="emailHelp"
+                  required
+                />
+                <span
+                  class="error"
+                  *ngIf="ngo_name && ngo_name.invalid && ngo_name.touched"
+                  class="text-danger"
+                >
+                  Required
+                </span>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label" class="fw-bold">User Name</label>
+                <input
+                  type="text"
+                  formControlName="username"
+                  class="form-control"
+                  aria-describedby="emailHelp"
+                  required
+                />
+                <span
+                  class="error"
+                  *ngIf="username && username.invalid && username.touched"
+                  class="text-danger"
+                >
+                  Required
+                </span>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label" class="fw-bold">Password</label>
+                <input
+                  type="password"
+                  formControlName="password"
+                  class="form-control"
+                  aria-describedby="emailHelp"
+                  required
+                />
+                <span
+                  class="error"
+                  *ngIf="password && password.invalid && password.touched"
+                  class="text-danger"
+                  >Required</span
+                >
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label" class="fw-bold">Address</label>
+                <input
+                  type="text"
+                  formControlName="address"
+                  class="form-control"
+                  aria-describedby="emailHelp"
+                  required
+                />
+                <span
+                  class="error"
+                  *ngIf="address && address.invalid && address.touched"
+                  class="text-danger"
+                >
+                  Required
+                </span>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label" class="fw-bold">Documents</label>
+                <input
+                  type="text"
+                  formControlName="documents"
+                  class="form-control"
+                  aria-describedby="emailHelp"
+                  required
+                />
+                <span
+                  class="error"
+                  *ngIf="documents && documents.invalid && documents.touched"
+                  class="text-danger"
+                >
+                  Required
+                </span>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label" class="fw-bold">Phone Number</label>
+                <input
+                  type="number"
+                  formControlName="phone_number"
+                  class="form-control"
+                  aria-describedby="emailHelp"
+                  required
+                />
+                <span
+                  class="error"
+                  *ngIf="
+                    phone_number && phone_number.invalid && phone_number.touched
+                  "
+                  class="text-danger"
+                >
+                  Required
+                </span>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label" class="fw-bold">Started In</label>
+                <input
+                  type="date"
+                  formControlName="started_in"
+                  class="form-control"
+                  aria-describedby="emailHelp"
+                  required
+                />
+                <span
+                  class="error"
+                  *ngIf="started_in && started_in.invalid && started_in.touched"
+                  class="text-danger"
+                >
+                  Required
+                </span>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              id="cancel"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              *ngIf="showAdd"
+              (click)="postNgoData()"
+              class="btn btn-primary"
+              id="save"
+              [disabled]="!formValues.valid"
+            >
+              Save
+            </button>
+            <button
+              type="button"
+              *ngIf="showUpdate"
+              (click)="updateNgoData()"
+              class="btn btn-primary"
+              id="update"
+            >
+              Update
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
