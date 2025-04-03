@@ -97,7 +97,7 @@ public class MasterData {
 		donationDto.setNgoId(1L);
 		donationDto.setDonarId(1L);
 		donationDto.setAmount(50000.0);
-		donationDto.setDonationDate(LocalDate.of(2022, 10, 20).toString());
+		donationDto.setDonationDate(LocalDate.of(2052, 10, 20));
 		donationDto.setDonationType("Health");
 		return donationDto;
 
@@ -110,7 +110,7 @@ public class MasterData {
 		donationDto.setNgoId(1L);
 		donationDto.setDonarId(1L);
 		donationDto.setAmount(50000.0);
-		donationDto.setDonationDate(LocalDate.now().toString());
+		donationDto.setDonationDate(LocalDate.now());
 		donationDto.setDonationType("Health");
 		donationDtos.add(donationDto);
 		donationDto = new DonationDto();
@@ -118,7 +118,7 @@ public class MasterData {
 		donationDto.setNgoId(1L);
 		donationDto.setDonarId(2L);
 		donationDto.setAmount(100000.0);
-		donationDto.setDonationDate(LocalDate.now().toString());
+		donationDto.setDonationDate(LocalDate.now());
 		donationDto.setDonationType("Animal Welfare");
 		donationDtos.add(donationDto);
 		return donationDtos;
@@ -131,7 +131,7 @@ public class MasterData {
 		requestDto.setNgoId(1L);
 		requestDto.setDonarId(2L);
 		requestDto.setAmount(25000.0);
-		requestDto.setDonationEndDate(LocalDate.of(2021, 12, 10));
+		requestDto.setDonationEndDate(LocalDate.of(2051, 12, 10));
 		requestDto.setRequestStatus("Sent");
 		return requestDto;
 	}
